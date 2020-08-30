@@ -1,0 +1,259 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  height: 550px;
+  width: auto;
+  background: #8e2de2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4a00e0,
+    #8e2de2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4a00e0,
+    #8e2de2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px gray;
+}
+.startPage {
+  height: 600px;
+  width: 296px;
+  color: #fbecec;
+  background: #8e2de2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4a00e0,
+    #8e2de2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4a00e0,
+    #8e2de2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.target-row {
+  height: 23%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+#board {
+  flex-wrap: wrap;
+  background-color: black;
+  height: 60%;
+  border-radius: 8px;
+}
+
+#target {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: #faf062d7;
+  margin: 20px;
+  margin: 20px;
+  font-size: 40px;
+}
+
+#currentSum {
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+  background-color: #303030;
+  margin: 20px;
+  color: white;
+  font-size: 25px;
+}
+
+.score {
+  height: 7%;
+  font-weight: 900;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+}
+.hide {
+  display: none;
+}
+#timer {
+  height: 9%;
+}
+
+.abs {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+.row {
+  display: flex;
+}
+.gameOver {
+  background: #ccccfe;
+  width: 314px;
+  border: 10px solid #4b4a9e;
+  border-radius: 10px;
+  height: 230px;
+  color: #393b44;
+}
+.cell {
+  height: 48px;
+  width: 48px;
+  border: 1px solid black;
+  margin: 2px;
+  border-radius: 5px;
+  background-color: #303030;
+  font-size: 24px;
+  color: #f1f3f8;
+  cursor: pointer;
+  font-weight: 700;
+}
+.bg-gray {
+  background-color: #f1f3f8;
+  color: #393b44;
+}
+.rectangle {
+  width: 220px;
+  height: 29px;
+  border: 2px solid coral;
+  border-radius: 5px;
+  background: white;
+  margin-left: 20px;
+}
+.innerRectangle {
+  width: 167px;
+  height: 25px;
+  background: coral;
+}
+.fa {
+  font-size: 30px !important;
+  color: orange;
+}
+.selected {
+  background-color: cyan;
+  color: #393b44;
+}
+.timer {
+  display: flex;
+}
+.yourScore {
+  padding: 20px 40px;
+  font-weight: 700;
+}
+.replay {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  border-radius: 15px;
+  background: orange;
+  color: white;
+  padding: 5px 30px;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin-left: 70px;
+}
+.exit {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  border-radius: 15px;
+  background: orangered;
+  color: white;
+  padding: 5px 30px;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  margin-left: 95px;
+}
+.highScore {
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 84px;
+  margin-top: 5px;
+}
+.btn:hover {
+  transform: scale(1.05);
+  color: white;
+}
+.rulesContainer p {
+  color: #393b44;
+  font-weight: 900;
+  /* padding: 32px; */
+  font-size: 15px;
+  padding: 8px;
+}
+.rulesContainer {
+  display: flex;
+  flex-direction: column;
+  background: #f1f3f8;
+  width: 234px;
+  border-radius: 5px;
+}
+.title {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+h1 {
+  font-family: cursive;
+  text-transform: uppercase;
+  background: -webkit-linear-gradient(#e1ffe8, #5fece2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  margin: 20px 10px;
+}
+.btn-mary {
+  border: 2px solid orange;
+  /* border: none; */
+  background: transparent;
+  padding: 10px 15px;
+  margin: 15px;
+  width: 120px;
+  color: white;
+}
+.btn-mary:hover {
+  transform: scale(1.05);
+  background-color: orangered;
+  border: none;
+}
+.mathClashImg {
+  height: 240px;
+  /* display: flex; */
+  width: 163px;
+  margin: 5px auto;
+}
+.bg-orange {
+  background-color: orange;
+  border: none;
+}
