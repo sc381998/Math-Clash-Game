@@ -7,6 +7,7 @@ let target;
 let grid = [];
 let count = 0;
 let music = new Audio("Game-Menu.mp3");
+
 const getStringId = (i, j) => {
   return i.toString() + j.toString();
 };
@@ -21,15 +22,18 @@ const addCells = () => {
     arr.push(obj);
   }
   // console.log(arr);
+  // grid.pop();
   grid.unshift(arr);
 };
 
 const updateBoard = () => {
   // console.log(grid);
+
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[i].length; j++) {
       const el = document.getElementById(getStringId(i, j));
-      if (!grid[i][j].value !== "") el.innerHTML = grid[i][j].value;
+      el.innerHTML = grid[i][j].value;
+
       if (grid[i][j].value) {
         el.classList.add("bg-gray");
       } else {
@@ -47,7 +51,7 @@ const updateBoard = () => {
 
 const gameOver = () => {
   // console.log(grid);
-  if (grid.length !== dimension) {
+  if (grid.length < dimension) {
     return false;
   }
   for (let i = 0; i < dimension; i++) {
@@ -81,11 +85,15 @@ const startTimer = () => {
 
     if (gameOver()) {
       music.pause();
+      let gameOverMusic = new Audio("You-lose-game-over.mp3");
+      gameOverMusic.play();
+
       document.getElementById("game").classList.add("abs");
       document.getElementById("gameOverContainer").classList.remove("hide");
       document.getElementById("score1").innerHTML = score;
       highScore = Math.max(score, highScore);
       document.getElementById("highScore").innerHTML = highScore;
+
       clearInterval(timerId);
       clearInterval(rectangleTimer);
       // startNewGame();
@@ -125,6 +133,7 @@ const removeAllSelected = () => {
   }
   return count;
 };
+
 const initTarget = () => {
   target = 10 + Math.ceil(Math.random() * 40);
   document.getElementById("target").innerHTML = target;
@@ -134,9 +143,32 @@ const updateScore = (score) => {
   document.getElementById("score").innerHTML = score;
 };
 
+const upwardshiftBoard = () => {
+  console.log(grid);
+  for (let i = 0; i < grid.length; i++) {
+    let col = "";
+    for (let j = 0; j < grid[i].length; j++) {
+      col += grid[j][i].value;
+    }
+
+    let j = 0;
+    for (j = 0; j < col.length; j++) {
+      grid[j][i].value = +col.charAt(i);
+      //console.log(board[i][c]);
+    }
+    while (j < grid[i].length) {
+      grid[j][i].value = "";
+      j++;
+    }
+  }
+  //updateBoard();
+};
+
 const handleClick = (cell, i, j) => {
+  // console.log(grid);
   if (grid[i][j].value === "") return;
   grid[i][j].selected = !grid[i][j].selected;
+
   if (grid[i][j].selected) {
     currentSum += grid[i][j].value;
   } else {
@@ -144,18 +176,24 @@ const handleClick = (cell, i, j) => {
   }
 
   if (currentSum > target) {
+    let gamealertMusic = new Audio("Wrong-answer-sound-effect.mp3");
+    gamealertMusic.play();
     currentSum = 0;
     deselectAllSelected();
   } else if (currentSum === target) {
+    let gamewinMusic = new Audio("Video-game-bonus-bell-sound-effect.mp3");
+    gamewinMusic.play();
     currentSum = 0;
     let noOfCellsRemoved = removeAllSelected();
     score += noOfCellsRemoved;
     initTarget();
     updateScore(score);
+    // upwardshiftBoard();
   }
 
   document.getElementById("currentSum").innerHTML = currentSum;
   updateBoard();
+  // console.log(grid);
 };
 
 const initBoard = () => {
@@ -175,6 +213,7 @@ const initBoard = () => {
     }
     cellContainer.appendChild(rowEl);
   }
+
   board.appendChild(cellContainer);
   addCells();
   addCells();
@@ -194,6 +233,7 @@ const startGame = () => {
   initBoard();
   startTimer();
 };
+
 const nextbtn = () => {
   if (count === 0) {
     document.getElementById("mathClashImg").setAttribute("src", "img1.png");
@@ -209,6 +249,7 @@ const nextbtn = () => {
     startBtn.setAttribute("onclick", "startGame()");
     startBtn.innerHTML = "Start Game";
     startBtn.classList.add("bg-orange");
+    document.getElementById("skipButton").classList.add("hide");
   } else {
     count = 0;
   }

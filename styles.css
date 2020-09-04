@@ -5,6 +5,12 @@
 body {
   margin: 0;
   height: 100vh;
+  background: #e5e5e5;
+  background-image: radial-gradient(
+    circle 592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgba(160, 199, 254, 1) 74.6%
+  );
 }
 
 .center {
@@ -23,7 +29,7 @@ body {
 }
 
 .game {
-  height: 550px;
+  height: 600px;
   width: auto;
   background: #8e2de2; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -37,11 +43,11 @@ body {
     #8e2de2
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 10px;
-  box-shadow: 2px 2px 5px gray;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 .startPage {
   height: 600px;
-  width: 296px;
+  width: 350px;
   color: #fbecec;
   background: #8e2de2; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -72,7 +78,7 @@ body {
 #board {
   flex-wrap: wrap;
   background-color: black;
-  height: 60%;
+  height: 56%;
   border-radius: 8px;
 }
 
@@ -121,15 +127,15 @@ body {
 }
 .gameOver {
   background: #ccccfe;
-  width: 314px;
+  width: 320px;
   border: 10px solid #4b4a9e;
   border-radius: 10px;
   height: 230px;
   color: #393b44;
 }
 .cell {
-  height: 48px;
-  width: 48px;
+  height: 50px;
+  width: 50px;
   border: 1px solid black;
   margin: 2px;
   border-radius: 5px;
@@ -223,6 +229,9 @@ body {
 .title {
   font-size: 14px;
   margin-bottom: 5px;
+  color: #ffd400;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 h1 {
   font-family: cursive;
@@ -241,11 +250,14 @@ h1 {
   margin: 15px;
   width: 120px;
   color: white;
+  font-size: 18px;
+  letter-spacing: 2px;
 }
+
 .btn-mary:hover {
   transform: scale(1.05);
-  background-color: orangered;
-  border: none;
+
+  /* border: none; */
 }
 .mathClashImg {
   height: 240px;
@@ -256,4 +268,17 @@ h1 {
 .bg-orange {
   background-color: orange;
   border: none;
+  letter-spacing: 0;
+}
+.marginTop-10 {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 590px) {
+  .startPage {
+    height: 635px;
+  }
+  .marginTop-10 {
+    margin-top: 0;
+  }
 }
